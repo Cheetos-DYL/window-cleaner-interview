@@ -294,7 +294,19 @@
   <div class="header">
     <h1>🧼 Window Cleaning – Business Chat</h1>
     <p>Just a quick chat to understand how things are going. Answer as much or as little as you like — no wrong answers.</p>
-    <span class="hint">⏱ ~10 minutes · all answers are private</span>
+    <span class="hint">⏱ ~10 minutes · 23 questions · drafts auto-save</span>
+  </div>
+
+  <!-- Progress Bar -->
+  <div style="background:#fff; border-radius:12px; padding:14px 18px; margin-bottom:18px; border:1px solid #e6edf6; box-shadow:0 1px 4px rgba(0,0,0,0.04);">
+    <div style="display:flex; justify-content:space-between; font-size:13px; color:#5a6b7d; margin-bottom:6px;">
+      <span id="progressText">0 / 23 answered</span>
+      <span id="draftStatus" style="color:#8a9bb0;">💾 saved</span>
+    </div>
+    <div style="height:6px; background:#e6edf6; border-radius:3px; overflow:hidden;">
+      <div id="progressBar" style="height:100%; width:0%; background:#2b6cb0; border-radius:3px; transition:width 0.4s;"></div>
+    </div>
+    <button id="clearDraftBtn" style="display:none; margin-top:8px; background:none; border:none; color:#b91c1c; font-size:12px; cursor:pointer; padding:4px 0;">🗑 Clear saved draft &amp; start over</button>
   </div>
 
   <form id="interviewForm">
@@ -492,11 +504,16 @@
 
 <script>
   (function() {
+    const STORAGE_KEY = 'wc_interview_draft';
     const form = document.getElementById('interviewForm');
     const panel = document.getElementById('resultPanel');
     const content = document.getElementById('resultContent');
     const copyBtn = document.getElementById('copyBtn');
     const copiedMsg = document.getElementById('copiedMsg');
+    const progressText = document.getElementById('progressText');
+    const progressBar = document.getElementById('progressBar');
+    const draftStatus = document.getElementById('draftStatus');
+    const clearDraftBtn = document.getElementById('clearDraftBtn');
     const questions = [
       "1. What does a typical workday look like?",
       "2. What part of your day takes the most time/energy?",
@@ -523,6 +540,84 @@
       "23. Anything else you'd like to share?"
     ];
 
+    // ── Save draft ──
+    function saveDraft() {
+      const fd = new FormData(form);
+      const answers = {};
+      questions.forEach((_, i) => {
+        const key = `q${i + 1}`;
+        answers[key] = fd.get(key) || '';
+      });
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
+        draftStatus.textContent = '💾 saved';
+        draftStatus.style.color = '#8a9bb0';
+      } catch(e) {}
+      updateProgress();
+    }
+
+    // ── Restore draft ──
+    function restoreDraft() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (!saved) return;
+        const answers = JSON.parse(saved);
+        let filled = 0;
+        questions.forEach((_, i) => {
+          const key = `q${i + 1}`;
+          const el = form.querySelector(`[name="${key}"]`);
+          if (el && answers[key]) {
+            el.value = answers[key];
+            if (answers[key].trim()) filled++;
+          }
+        });
+        if (filled > 0) {
+          clearDraftBtn.style.display = 'inline';
+          updateProgress();
+          draftStatus.textContent = '📋 draft restored';
+          setTimeout(() => { draftStatus.textContent = '💾 saved'; }, 2000);
+        }
+      } catch(e) {}
+    }
+
+    // ── Update progress ──
+    function updateProgress() {
+      const fd = new FormData(form);
+      let answered = 0;
+      questions.forEach((_, i) => {
+        const val = fd.get(`q${i + 1}`) || '';
+        if (val.trim()) answered++;
+      });
+      const pct = Math.round((answered / questions.length) * 100);
+      progressText.textContent = `${answered} / ${questions.length} answered`;
+      progressBar.style.width = pct + '%';
+    }
+
+    // ── Clear draft ──
+    function clearDraft() {
+      if (!confirm('Clear all saved answers and start over?')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      questions.forEach((_, i) => {
+        const el = form.querySelector(`[name="q${i + 1}"]`);
+        if (el) el.value = '';
+      });
+      updateProgress();
+      clearDraftBtn.style.display = 'none';
+      draftStatus.textContent = '🗑 draft cleared';
+      draftStatus.style.color = '#8a9bb0';
+      setTimeout(() => { draftStatus.textContent = '💾 saved'; }, 2000);
+    }
+
+    // ── Auto-save on any input ──
+    let saveTimer;
+    form.addEventListener('input', function() {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveDraft, 400);
+    });
+
+    clearDraftBtn.addEventListener('click', clearDraft);
+
+    // ── Submit ──
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -538,23 +633,24 @@
       });
 
       content.innerHTML = html;
-
-      // Store plain text for copy
       copyBtn.dataset.text = plain;
 
-      // Show result, hide form
+      // Clear saved draft after submit
+      localStorage.removeItem(STORAGE_KEY);
+
       form.style.display = 'none';
+      document.querySelector('.progress-section')?.remove();
       panel.classList.add('visible');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
+    // ── Copy ──
     copyBtn.addEventListener('click', function() {
       const text = this.dataset.text;
       navigator.clipboard.writeText(text).then(() => {
         copiedMsg.classList.add('visible');
         setTimeout(() => copiedMsg.classList.remove('visible'), 2500);
       }).catch(() => {
-        // Fallback
         const ta = document.createElement('textarea');
         ta.value = text;
         document.body.appendChild(ta);
@@ -565,6 +661,9 @@
         setTimeout(() => copiedMsg.classList.remove('visible'), 2500);
       });
     });
+
+    // ── Init ──
+    restoreDraft();
   })();
 </script>
 

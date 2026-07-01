@@ -3,669 +3,561 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Window Cleaning Business – Quick Interview</title>
+<title>Window Cleaning Business – Quick Chat</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #f0f4f8;
-    color: #1a2332;
-    line-height: 1.6;
-    padding: 20px;
-    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f0f4f8; color: #1a2332; line-height: 1.5;
+    padding: 16px; min-height: 100vh;
   }
-
-  .container {
-    max-width: 720px;
-    margin: 0 auto;
+  .container { max-width: 680px; margin: 0 auto; }
+  .header { text-align: center; margin-bottom: 20px; padding: 24px 16px 12px; }
+  .header h1 { font-size: 22px; font-weight: 700; color: #0e1622; margin-bottom: 4px; }
+  .header p { color: #5a6b7d; font-size: 14px; }
+  .header .hint { display: inline-block; background: #e6edf6; color: #3a5a7a; font-size: 12px; padding: 5px 12px; border-radius: 20px; margin-top: 8px; }
+  .progress-card {
+    background: #fff; border-radius: 12px; padding: 12px 16px; margin-bottom: 16px;
+    border: 1px solid #e6edf6; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
-
-  /* ── Header ── */
-  .header {
-    text-align: center;
-    margin-bottom: 28px;
-    padding: 32px 20px 20px;
-  }
-
-  .header h1 {
-    font-size: 24px;
-    font-weight: 700;
-    color: #0e1622;
-    margin-bottom: 6px;
-  }
-
-  .header p {
-    color: #5a6b7d;
-    font-size: 15px;
-  }
-
-  .header .hint {
-    display: inline-block;
-    background: #e6edf6;
-    color: #3a5a7a;
-    font-size: 13px;
-    padding: 6px 14px;
-    border-radius: 20px;
-    margin-top: 10px;
-  }
-
-  /* ── Section ── */
+  .progress-top { display: flex; justify-content: space-between; font-size: 13px; color: #5a6b7d; margin-bottom: 5px; }
+  .progress-track { height: 6px; background: #e6edf6; border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; width: 0%; background: #2b6cb0; border-radius: 3px; transition: width 0.4s; }
+  .clear-draft { margin-top: 6px; background: none; border: none; color: #b91c1c; font-size: 12px; cursor: pointer; display: none; padding: 2px 0; }
   .section {
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 24px 20px;
-    margin-bottom: 18px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    border: 1px solid #e6edf6;
+    background: #fff; border-radius: 14px; padding: 20px 16px; margin-bottom: 14px;
+    border: 1px solid #e6edf6; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
-
   .section-title {
-    font-size: 15px;
-    font-weight: 600;
-    color: #2b6cb0;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 18px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #eef3f9;
+    font-size: 14px; font-weight: 600; color: #2b6cb0; text-transform: uppercase; letter-spacing: 0.4px;
+    margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #eef3f9;
   }
-
-  /* ── Form Controls ── */
-  .form-group {
-    margin-bottom: 20px;
-  }
-
-  .form-group:last-child {
-    margin-bottom: 0;
-  }
-
-  label {
-    display: block;
-    font-weight: 600;
-    font-size: 14px;
-    color: #1a2332;
-    margin-bottom: 4px;
-  }
-
-  .expected-hint {
-    font-size: 13px;
-    color: #7a8b9e;
-    margin-bottom: 8px;
-    font-style: italic;
-    line-height: 1.5;
-  }
-
-  textarea, input[type="text"] {
-    width: 100%;
-    padding: 12px 14px;
-    font-size: 15px;
-    font-family: 'Inter', sans-serif;
-    border: 1.5px solid #d0d9e6;
-    border-radius: 10px;
-    background: #fafbfc;
-    color: #1a2332;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
-    resize: vertical;
-    min-height: 48px;
-  }
-
-  textarea:focus, input[type="text"]:focus {
-    border-color: #2b6cb0;
-    box-shadow: 0 0 0 3px rgba(43,108,176,0.1);
-    background: #ffffff;
-  }
-
-  textarea::placeholder, input::placeholder {
-    color: #a0b0c4;
-    font-style: italic;
-    font-size: 14px;
-  }
-
-  textarea {
-    min-height: 80px;
-  }
-
-  .radio-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 4px;
-  }
-
+  .form-group { margin-bottom: 16px; }
+  .form-group:last-child { margin-bottom: 0; }
+  .q-label { display: block; font-weight: 600; font-size: 14px; color: #1a2332; margin-bottom: 8px; }
+  .radio-group { display: flex; flex-direction: column; gap: 6px; }
   .radio-group label {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 400;
-    font-size: 14px;
-    background: #f4f7fc;
-    padding: 8px 14px;
-    border-radius: 10px;
-    border: 1.5px solid #e0e8f2;
-    cursor: pointer;
-    transition: all 0.15s;
+    display: flex; align-items: center; gap: 8px; font-weight: 400; font-size: 14px;
+    background: #f6f9fc; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #e0e8f2;
+    cursor: pointer; transition: all 0.12s;
   }
-
-  .radio-group label:hover {
-    background: #eaf1fa;
+  .radio-group label:hover { background: #eaf1fa; }
+  .radio-group label.selected { background: #dbe8f8; border-color: #2b6cb0; }
+  .radio-group input[type="radio"] { accent-color: #2b6cb0; }
+  .other-input {
+    flex: 1; border: none; background: transparent; font-size: 14px; font-family: inherit;
+    outline: none; padding: 2px 4px; border-bottom: 1.5px dashed #a0b0c4; min-width: 80px;
   }
-
-  .radio-group input[type="radio"]:checked + span {
-    color: #2b6cb0;
-    font-weight: 600;
-  }
-
-  .radio-group input[type="radio"]:checked ~ .radio-group label {
-    background: #dbe8f8;
-    border-color: #2b6cb0;
-  }
-
-  /* ── Submit ── */
-  .submit-area {
-    text-align: center;
-    padding: 12px 0 8px;
-  }
-
+  .other-input:focus { border-bottom-color: #2b6cb0; }
+  .other-input::placeholder { color: #a0b0c4; font-style: italic; font-size: 13px; }
+  .submit-area { text-align: center; padding: 8px 0; }
   .btn-submit {
-    background: #1a5a9e;
-    color: white;
-    border: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 17px;
-    font-weight: 600;
-    padding: 14px 40px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
-    width: 100%;
-    max-width: 320px;
-  }
-
-  .btn-submit:hover {
-    background: #0e4080;
-  }
-
-  .btn-submit:active {
-    transform: scale(0.98);
-  }
-
-  /* ── Result Panel ── */
-  .result-panel {
-    display: none;
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 28px 22px;
-    margin-bottom: 18px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    border: 1px solid #e6edf6;
-  }
-
-  .result-panel.visible {
-    display: block;
-  }
-
-  .result-panel h2 {
-    font-size: 18px;
-    color: #0e7433;
-    margin-bottom: 16px;
-  }
-
-  .result-panel .qa-block {
-    margin-bottom: 14px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid #eef3f9;
-  }
-
-  .result-panel .qa-block:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  .result-panel .qa-q {
-    font-weight: 600;
-    font-size: 13px;
-    color: #3a5a7a;
-    margin-bottom: 2px;
-  }
-
-  .result-panel .qa-a {
-    font-size: 15px;
-    color: #1a2332;
-    white-space: pre-wrap;
-  }
-
-  .btn-copy {
-    display: inline-block;
-    background: #e8f0fe;
-    color: #1a5a9e;
-    border: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 10px 22px;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-top: 16px;
+    background: #1a5a9e; color: white; border: none; font-size: 16px; font-weight: 600;
+    padding: 14px 40px; border-radius: 12px; cursor: pointer; width: 100%; max-width: 300px;
     transition: background 0.2s;
   }
-
-  .btn-copy:hover {
-    background: #d4e2f8;
+  .btn-submit:hover { background: #0e4080; }
+  .btn-submit:active { transform: scale(0.98); }
+  .result-panel { display: none; background: #fff; border-radius: 14px; padding: 24px 18px; margin-bottom: 14px; border: 1px solid #e6edf6; }
+  .result-panel.visible { display: block; }
+  .result-panel h2 { font-size: 18px; color: #0e7433; margin-bottom: 14px; }
+  .qa-block { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #eef3f9; }
+  .qa-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .qa-q { font-weight: 600; font-size: 13px; color: #3a5a7a; margin-bottom: 2px; }
+  .qa-a { font-size: 14px; color: #1a2332; white-space: pre-wrap; }
+  .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .btn-copy, .btn-share {
+    font-family: inherit; font-size: 14px; font-weight: 500; padding: 10px 20px;
+    border-radius: 10px; cursor: pointer; border: none; transition: background 0.2s;
   }
-
-  .copied-msg {
-    display: none;
-    color: #0e7433;
-    font-size: 14px;
-    margin-top: 8px;
-  }
-
-  .copied-msg.visible {
-    display: block;
-  }
-
-  /* ── Footer ── */
-  .footer {
-    text-align: center;
-    color: #8a9bb0;
-    font-size: 12px;
-    padding: 16px 0 32px;
-  }
-
+  .btn-copy { background: #e8f0fe; color: #1a5a9e; }
+  .btn-copy:hover { background: #d4e2f8; }
+  .btn-share { background: #1a7333; color: white; }
+  .btn-share:hover { background: #0e5a28; }
+  .copied-msg { display: none; color: #0e7433; font-size: 13px; margin-top: 6px; }
+  .copied-msg.visible { display: block; }
+  .footer { text-align: center; color: #8a9bb0; font-size: 12px; padding: 12px 0 24px; }
   @media (max-width: 480px) {
-    body { padding: 12px; }
-    .section { padding: 18px 14px; }
-    .header h1 { font-size: 20px; }
-    .radio-group { flex-direction: column; }
-    .radio-group label { width: 100%; }
+    body { padding: 10px; }
+    .section { padding: 14px 12px; }
+    .header h1 { font-size: 19px; }
   }
 </style>
 </head>
 <body>
-
 <div class="container">
 
-  <!-- Header -->
-  <div class="header">
-    <h1>🧼 Window Cleaning – Business Chat</h1>
-    <p>Just a quick chat to understand how things are going. Answer as much or as little as you like — no wrong answers.</p>
-    <span class="hint">⏱ ~10 minutes · 23 questions · drafts auto-save</span>
+<div class="header">
+  <h1>🧼 Window Cleaning Business Chat</h1>
+  <p>Quick chat to understand how things are going. Just tap the closest answer.</p>
+  <span class="hint">⏱ ~8 minutes · 23 questions · auto-saves draft</span>
+</div>
+
+<div class="progress-card">
+  <div class="progress-top">
+    <span id="progressText">0 / 23 answered</span>
+    <span id="draftStatus" style="color:#8a9bb0;">💾 saved</span>
   </div>
+  <div class="progress-track"><div class="progress-fill" id="progressBar"></div></div>
+  <button class="clear-draft" id="clearDraftBtn">🗑 Clear saved draft &amp; start over</button>
+</div>
 
-  <!-- Progress Bar -->
-  <div style="background:#fff; border-radius:12px; padding:14px 18px; margin-bottom:18px; border:1px solid #e6edf6; box-shadow:0 1px 4px rgba(0,0,0,0.04);">
-    <div style="display:flex; justify-content:space-between; font-size:13px; color:#5a6b7d; margin-bottom:6px;">
-      <span id="progressText">0 / 23 answered</span>
-      <span id="draftStatus" style="color:#8a9bb0;">💾 saved</span>
-    </div>
-    <div style="height:6px; background:#e6edf6; border-radius:3px; overflow:hidden;">
-      <div id="progressBar" style="height:100%; width:0%; background:#2b6cb0; border-radius:3px; transition:width 0.4s;"></div>
-    </div>
-    <button id="clearDraftBtn" style="display:none; margin-top:8px; background:none; border:none; color:#b91c1c; font-size:12px; cursor:pointer; padding:4px 0;">🗑 Clear saved draft &amp; start over</button>
+<form id="interviewForm">
+
+<!-- Section 1 -->
+<div class="section">
+<div class="section-title">📋 Your Day-to-Day</div>
+
+<div class="form-group">
+  <div class="q-label">1. What does a typical workday look like?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q1" value="Start early (7am), finish early afternoon. Regular round of customers."> Start early (7am), finish early afternoon. Regular round.</label>
+    <label><input type="radio" name="q1" value="Irregular — depends on bookings, different every day."> Irregular — depends on bookings, different every day.</label>
+    <label><input type="radio" name="q1" value="Part-time, fit it around other commitments."> Part-time, fit around other commitments.</label>
+    <label><input type="radio" name="q1" value="other"> Other: <input type="text" class="other-input" name="q1o" placeholder="Type your answer..."></label>
   </div>
+</div>
 
-  <form id="interviewForm">
-
-    <!-- Section 1 -->
-    <div class="section">
-      <div class="section-title">📋 Your Day-to-Day</div>
-
-      <div class="form-group">
-        <label>1. What does a typical workday look like for you right now?</label>
-        <div class="expected-hint">💡 Typical: "Start at 7am, finish around 3pm. I have a regular round of about 20–30 customers a week. I work alone."</div>
-        <textarea name="q1" placeholder="e.g. I start at 7am, finish around 3pm, visit about 5-6 houses a day..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>2. What part of your daily routine takes the most time or energy?</label>
-        <div class="expected-hint">💡 Typical: "Driving between jobs. Chasing payments. Setting up ladders on tricky houses."</div>
-        <textarea name="q2" placeholder="e.g. Travelling between jobs, or handling quotes on the phone..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>3. What's the most frustrating thing about running your business?</label>
-        <div class="expected-hint">💡 Typical: "People cancelling last minute. Getting paid on time. Finding new customers when I lose one."</div>
-        <textarea name="q3" placeholder="e.g. Cancellations, late payments, or paperwork..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>4. Do you work alone or with anyone else?</label>
-        <div class="expected-hint">💡 Typical: "Just me. Sometimes my son helps on Saturdays."</div>
-        <textarea name="q4" placeholder="e.g. Just me, or I have one part-time helper..."></textarea>
-      </div>
-    </div>
-
-    <!-- Section 2 -->
-    <div class="section">
-      <div class="section-title">👥 Customers & Marketing</div>
-
-      <div class="form-group">
-        <label>5. How do most customers find you?</label>
-        <div class="expected-hint">💡 Typical: "Word of mouth mainly. A few from a Facebook page I set up years ago. I put leaflets through doors sometimes."</div>
-        <textarea name="q5" placeholder="e.g. Word of mouth, flyers, Facebook, Google..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>6. Is your bigger challenge getting new customers, or keeping the ones you have?</label>
-        <div class="expected-hint">💡 Typical: "I've got enough work really. But when I lose a regular customer, it's hard to fill that gap."</div>
-        <textarea name="q6" placeholder="e.g. New customers / keeping regulars / not a problem at all..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>7. How do customers usually book you — call, text, WhatsApp, Facebook?</label>
-        <div class="expected-hint">💡 Typical: "Phone call mostly. Some text. A few message me on Facebook."</div>
-        <textarea name="q7" placeholder="e.g. Call, text, WhatsApp, Facebook, email..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>8. Do people cancel or reschedule often? How do you manage that?</label>
-        <div class="expected-hint">💡 Typical: "Maybe once a week. I just try to fit them in the next day if I can. No real system."</div>
-        <textarea name="q8" placeholder="e.g. Not often / a few times a month. I just make a note in my phone..."></textarea>
-      </div>
-    </div>
-
-    <!-- Section 3 -->
-    <div class="section">
-      <div class="section-title">💰 Payments & Pricing</div>
-
-      <div class="form-group">
-        <label>9. How do customers pay you now?</label>
-        <div class="expected-hint">💡 Typical: "Cash mostly. Some bank transfer. A couple still write a cheque."</div>
-        <textarea name="q9" placeholder="e.g. Cash, bank transfer, card, PayPal..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>10. Do you ever have to chase people for payment? How much time does that take?</label>
-        <div class="expected-hint">💡 Typical: "A few each month. Maybe 20-30 minutes a week sending reminders."</div>
-        <textarea name="q10" placeholder="e.g. Not really / yes, a few times a month, takes maybe half an hour..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>11. How do you decide what to charge — per job, per hour, per window?</label>
-        <div class="expected-hint">💡 Typical: "By the job. A terraced house is £15, a semi is £20, bigger houses £25-30."</div>
-        <textarea name="q11" placeholder="e.g. Fixed price per job, or per hour, or depends on the house..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>12. Do you ever feel like you undercharged for a job? How do you handle that?</label>
-        <div class="expected-hint">💡 Typical: "Sometimes. Especially for bigger houses with lots of windows. I just put it down to experience."</div>
-        <textarea name="q12" placeholder="e.g. Sometimes, especially on bigger or awkward houses..."></textarea>
-      </div>
-    </div>
-
-    <!-- Section 4 -->
-    <div class="section">
-      <div class="section-title">📄 Paperwork & Admin</div>
-
-      <div class="form-group">
-        <label>13. Do you handle your own bookkeeping, tax returns, invoicing?</label>
-        <div class="expected-hint">💡 Typical: "My wife helps with the books. I use a spreadsheet. An accountant does the tax return once a year."</div>
-        <textarea name="q13" placeholder="e.g. I do it myself / my partner helps / I have an accountant / I don't do any..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>14. Roughly how much time per week goes to paperwork vs. actual cleaning?</label>
-        <div class="expected-hint">💡 Typical: "Maybe 1-2 hours a week on paperwork. Rest is cleaning."</div>
-        <textarea name="q14" placeholder="e.g. 1-2 hours admin, the rest out on jobs..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>15. Do you have a website, Google Business page, or social media?</label>
-        <div class="expected-hint">💡 Typical: "No website. I have a Google Business page but haven't updated it in ages. A Facebook page too."</div>
-        <textarea name="q15" placeholder="e.g. Google Business page / Facebook / no website / nothing online..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>16. How do you keep track of customers — addresses, past jobs, notes?</label>
-        <div class="expected-hint">💡 Typical: "A notebook. Or I just remember. I don't really keep proper records."</div>
-        <textarea name="q16" placeholder="e.g. Notebook / spreadsheet / phone notes / I just remember..."></textarea>
-      </div>
-    </div>
-
-    <!-- Section 5 -->
-    <div class="section">
-      <div class="section-title">🚀 The Future</div>
-
-      <div class="form-group">
-        <label>17. Would you like to grow — more customers, employees, bigger jobs?</label>
-        <div class="expected-hint">💡 Typical: "I'm busy enough as it is. I'd rather make the current work easier than take on more."</div>
-        <textarea name="q17" placeholder="e.g. I want to grow / I'm happy with this size / I want to reduce hours..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>18. What's stopping you from raising your prices?</label>
-        <div class="expected-hint">💡 Typical: "Worried I'll lose customers. Most of mine have been with me for years."</div>
-        <textarea name="q18" placeholder="e.g. Afraid to lose regulars / customers won't pay more / never thought about it..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>19. If you had one extra hour a day, what would you spend it on?</label>
-        <div class="expected-hint">💡 Typical: "Finishing earlier to see the kids. Or sorting out the business properly."</div>
-        <textarea name="q19" placeholder="e.g. Family time / sorting the business / more jobs / rest..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>20. What does a perfect day running this business look like for you?</label>
-        <div class="expected-hint">💡 Typical: "Good weather, all customers home, paid on the day, home by 3pm."</div>
-        <textarea name="q20" placeholder="e.g. Good weather, no cancellations, everyone pays on time, home early..."></textarea>
-      </div>
-    </div>
-
-    <!-- Section 6 -->
-    <div class="section">
-      <div class="section-title">✨ One Last Thing</div>
-
-      <div class="form-group">
-        <label>21. If you could wave a magic wand and fix one thing about your business, what would it be?</label>
-        <div class="expected-hint">💡 Typical: "I'd have a simple system that sends reminders automatically and takes bookings online. No more phone tag."</div>
-        <textarea name="q21" placeholder="e.g. Automatic reminders, online booking, easier payments, less paperwork..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>22. Is there something you wish existed but doesn't?</label>
-        <div class="expected-hint">💡 Typical: "An app that just works for a window cleaner — simple, not too expensive, does scheduling and payments."</div>
-        <textarea name="q22" placeholder="e.g. A simple app for small cleaning businesses that handles everything..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label>23. Anything else you'd like to share?</label>
-        <div class="expected-hint">💡 Optional — anything that didn't come up above.</div>
-        <textarea name="q23" placeholder="Any other thoughts..."></textarea>
-      </div>
-    </div>
-
-    <!-- Submit -->
-    <div class="submit-area">
-      <button type="submit" class="btn-submit">Submit Answers</button>
-    </div>
-
-  </form>
-
-  <!-- Result Panel -->
-  <div class="result-panel" id="resultPanel">
-    <h2>✅ Answers Submitted!</h2>
-    <p style="color:#5a6b7d; margin-bottom: 16px;">You can review or copy the answers below.</p>
-    <div id="resultContent"></div>
-    <button class="btn-copy" id="copyBtn">📋 Copy All Answers</button>
-    <div class="copied-msg" id="copiedMsg">Copied to clipboard!</div>
+<div class="form-group">
+  <div class="q-label">2. What part of your day takes the most time or energy?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q2" value="Driving between jobs."> Driving between jobs.</label>
+    <label><input type="radio" name="q2" value="Chasing payments and paperwork."> Chasing payments and paperwork.</label>
+    <label><input type="radio" name="q2" value="Setting up ladders on awkward houses."> Setting up ladders on awkward houses.</label>
+    <label><input type="radio" name="q2" value="other"> Other: <input type="text" class="other-input" name="q2o" placeholder="Type..."></label>
   </div>
+</div>
 
-  <!-- Footer -->
-  <div class="footer">
-    Built for a friendly chat &middot; Your answers are saved only when you press Submit
+<div class="form-group">
+  <div class="q-label">3. What's the most frustrating thing about running your business?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q3" value="Last-minute cancellations."> Last-minute cancellations.</label>
+    <label><input type="radio" name="q3" value="Getting paid on time."> Getting paid on time.</label>
+    <label><input type="radio" name="q3" value="Finding new customers when I lose one."> Finding new customers when I lose one.</label>
+    <label><input type="radio" name="q3" value="other"> Other: <input type="text" class="other-input" name="q3o" placeholder="Type..."></label>
   </div>
+</div>
 
+<div class="form-group">
+  <div class="q-label">4. Do you work alone or with anyone else?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q4" value="Just me, always."> Just me, always.</label>
+    <label><input type="radio" name="q4" value="Sometimes I have help."> Sometimes I have help.</label>
+    <label><input type="radio" name="q4" value="I have a regular employee/helper."> I have a regular employee / helper.</label>
+    <label><input type="radio" name="q4" value="other"> Other: <input type="text" class="other-input" name="q4o" placeholder="Type..."></label>
+  </div>
+</div>
+</div>
+
+<!-- Section 2 -->
+<div class="section">
+<div class="section-title">👥 Customers &amp; Marketing</div>
+
+<div class="form-group">
+  <div class="q-label">5. How do most customers find you?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q5" value="Word of mouth."> Word of mouth.</label>
+    <label><input type="radio" name="q5" value="Facebook / social media."> Facebook / social media.</label>
+    <label><input type="radio" name="q5" value="Flyers / leaflets."> Flyers / leaflets.</label>
+    <label><input type="radio" name="q5" value="other"> Other: <input type="text" class="other-input" name="q5o" placeholder="Type..."></label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="q-label">6. Bigger challenge — getting new customers, or keeping regulars?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q6" value="Getting new customers."> Getting new customers.</label>
+    <label><input type="radio" name="q6" value="Keeping regular customers."> Keeping regular customers.</label>
+    <label><input type="radio" name="q6" value="Neither — I have steady work."> Neither — I have steady work.</label>
+    <label><input type="radio" name="q6" value="other"> Other: <input type="text" class="other-input" name="q6o" placeholder="Type..."></label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="q-label">7. How do customers usually book you?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q7" value="Phone call."> Phone call.</label>
+    <label><input type="radio" name="q7" value="Text / WhatsApp."> Text / WhatsApp.</label>
+    <label><input type="radio" name="q7" value="Facebook / online."> Facebook / online.</label>
+    <label><input type="radio" name="q7" value="other"> Other: <input type="text" class="other-input" name="q7o" placeholder="Type..."></label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="q-label">8. Do people cancel or reschedule often?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q8" value="Once a week or so."> Once a week or so.</label>
+    <label><input type="radio" name="q8" value="A few times a month."> A few times a month.</label>
+    <label><input type="radio" name="q8" value="Rarely."> Rarely.</label>
+    <label><input type="radio" name="q8" value="other"> Other: <input type="text" class="other-input" name="q8o" placeholder="Type..."></label>
+  </div>
+</div>
+</div>
+
+<!-- Section 3 -->
+<div class="section">
+<div class="section-title">💰 Payments &amp; Pricing</div>
+
+<div class="form-group">
+  <div class="q-label">9. How do customers pay you?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q9" value="Cash."> Cash.</label>
+    <label><input type="radio" name="q9" value="Bank transfer."> Bank transfer.</label>
+    <label><input type="radio" name="q9" value="Mix of cash and bank transfer."> Mix of cash and bank transfer.</label>
+    <label><input type="radio" name="q9" value="other"> Other: <input type="text" class="other-input" name="q9o" placeholder="Type..."></label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="q-label">10. Do you ever have to chase people for payment?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q10" value="A few times a month — takes about half an hour."> A few times a month — takes ~30 min.</label>
+    <label><input type="radio" name="q10" value="Rarely — most pay on time."> Rarely — most pay on time.</label>
+    <label><input type="radio" name="q10" value="Yes, quite often."> Yes, quite often.</label>
+    <label><input type="radio" name="q10" value="other"> Other: <input type="text" class="other-input" name="q10o" placeholder="Type..."></label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="q-label">11. How do you decide what to charge?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q11" value="Fixed price per job."> Fixed price per job.</label>
+    <label><input type="radio" name="q11" value="Depends on house size."> Depends on house size.</label>
+    <label><input type="radio" name="q11" value="Per window."> Per window.</label>
+    <label><input type="radio" name="q11" value="other"> Other: <input type="text" class="other-input" name="q11o" placeholder="Type..."></label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="q-label">12. Do you ever feel like you undercharged for a job?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q12" value="Sometimes — especially on bigger houses."> Sometimes — bigger/awkward houses.</label>
+    <label><input type="radio" name="q12" value="Not really — I know my prices."> Not really — I know my prices.</label>
+    <label><input type="radio" name="q12" value="All the time — I struggle with pricing."> All the time — I struggle with pricing.</label>
+    <label><input type="radio" name="q12" value="other"> Other: <input type="text" class="other-input" name="q12o" placeholder="Type..."></label>
+  </div>
+</div>
+</div>
+
+<!-- Section 4 -->
+<div class="section">
+<div class="section-title">📄 Paperwork &amp; Admin</div>
+
+<div class="form-group">
+  <div class="q-label">13. Who handles the bookkeeping and tax?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q13" value="My partner / spouse helps."> My partner / spouse helps.</label>
+    <label><input type="radio" name="q13" value="I do it myself."> I do it myself.</label>
+    <label><input type="radio" name="q13" value="I have an accountant."> I have an accountant.</label>
+    <label><input type="radio" name="q13" value="other"> Other: <input type="text" class="other-input" name="q13o" placeholder="Type..."></label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="q-label">14. Roughly how much time per week on paperwork vs cleaning?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q14" value="1-2 hours admin, rest is cleaning."> 1-2 hours admin, rest cleaning.</label>
+    <label><input type="radio" name="q14" value="Almost no paperwork."> Almost no paperwork.</label>
+    <label><input type="radio" name="q14" value="A few hours each week."> A few hours each week.</label>
+    <label><input type="radio" name="q14" value="other"> Other: <input type="text" class="other-input" name="q14o" placeholder="Type..."></label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="q-label">15. Do you have a website, Google Business, or social media?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q15" value="Google Business page."> Google Business page.</label>
+    <label><input type="radio" name="q15" value="Facebook page."> Facebook page.</label>
+    <label><input type="radio" name="q15" value="Nothing online."> Nothing online.</label>
+    <label><input type="radio" name="q15" value="other"> Other: <input type="text" class="other-input" name="q15o" placeholder="Type..."></label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="q-label">16. How do you keep track of customers?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q16" value="Notebook / paper."> Notebook / paper.</label>
+    <label><input type="radio" name="q16" value="I just remember."> I just remember.</label>
+    <label><input type="radio" name="q16" value="Spreadsheet (Excel / Google Sheets)."> Spreadsheet.</label>
+    <label><input type="radio" name="q16" value="other"> Other: <input type="text" class="other-input" name="q16o" placeholder="Type..."></label>
+  </div>
+</div>
+</div>
+
+<!-- Section 5 -->
+<div class="section">
+<div class="section-title">🚀 The Future</div>
+
+<div class="form-group">
+  <div class="q-label">17. Would you like to grow the business?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q17" value="Happy as is — just want to make it easier."> Happy as is — want to make it easier.</label>
+    <label><input type="radio" name="q17" value="Yes — more customers."> Yes — more customers.</label>
+    <label><input type="radio" name="q17" value="I'd like to work less / reduce hours."> I'd like to reduce hours.</label>
+    <label><input type="radio" name="q17" value="other"> Other: <input type="text" class="other-input" name="q17o" placeholder="Type..."></label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="q-label">18. What's stopping you from raising your prices?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q18" value="Afraid to lose regular customers."> Afraid to lose regulars.</label>
+    <label><input type="radio" name="q18" value="Customers won't pay more."> Customers won't pay more.</label>
+    <label><input type="radio" name="q18" value="Never really thought about it."> Never really thought about it.</label>
+    <label><input type="radio" name="q18" value="other"> Other: <input type="text" class="other-input" name="q18o" placeholder="Type..."></label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="q-label">19. If you had one extra hour a day, what would you do?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q19" value="Family time / rest."> Family time / rest.</label>
+    <label><input type="radio" name="q19" value="Sort out the business (admin, marketing)."> Sort out the business.</label>
+    <label><input type="radio" name="q19" value="More jobs / more money."> More jobs / more money.</label>
+    <label><input type="radio" name="q19" value="other"> Other: <input type="text" class="other-input" name="q19o" placeholder="Type..."></label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="q-label">20. What does a perfect day running this business look like?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q20" value="Good weather, all customers home, paid on the day, home by 3pm."> Good weather, paid same day, home early.</label>
+    <label><input type="radio" name="q20" value="No cancellations, everything goes smoothly."> No cancellations, smooth day.</label>
+    <label><input type="radio" name="q20" value="Big job, big pay day."> Big job, big pay day.</label>
+    <label><input type="radio" name="q20" value="other"> Other: <input type="text" class="other-input" name="q20o" placeholder="Type..."></label>
+  </div>
+</div>
+</div>
+
+<!-- Section 6 -->
+<div class="section">
+<div class="section-title">✨ One Last Thing</div>
+
+<div class="form-group">
+  <div class="q-label">21. If you could wave a magic wand and fix one thing, what?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q21" value="Automatic reminders and online booking."> Auto reminders &amp; online booking.</label>
+    <label><input type="radio" name="q21" value="Easier payments — card or online."> Easier payments (card/online).</label>
+    <label><input type="radio" name="q21" value="Less paperwork and admin."> Less paperwork / admin.</label>
+    <label><input type="radio" name="q21" value="other"> Other: <input type="text" class="other-input" name="q21o" placeholder="Type..."></label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="q-label">22. Is there something you wish existed but doesn't?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q22" value="Simple all-in-one app for small cleaning businesses."> Simple all-in-one app for cleaners.</label>
+    <label><input type="radio" name="q22" value="Cheaper payment processing."> Cheaper payment processing.</label>
+    <label><input type="radio" name="q22" value="More local customers."> More local customers.</label>
+    <label><input type="radio" name="q22" value="other"> Other: <input type="text" class="other-input" name="q22o" placeholder="Type..."></label>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="q-label">23. Anything else you'd like to share?</div>
+  <div class="radio-group">
+    <label><input type="radio" name="q23" value="No, that covers everything."> No, that covers everything.</label>
+    <label><input type="radio" name="q23" value="Yes — I'll write below."> Yes — let me add: <input type="text" class="other-input" name="q23o" placeholder="Write here..." style="flex:2;"></label>
+  </div>
+</div>
+</div>
+
+<div class="submit-area">
+  <button type="submit" class="btn-submit">Submit Answers</button>
+</div>
+</form>
+
+<div class="result-panel" id="resultPanel">
+  <h2>✅ Done! Thanks for sharing.</h2>
+  <p style="color:#5a6b7d; margin-bottom:12px; font-size:14px;">You can copy or share your answers below.</p>
+  <div id="resultContent"></div>
+  <div class="btn-row">
+    <button class="btn-copy" id="copyBtn">📋 Copy All</button>
+    <button class="btn-share" id="shareBtn">📤 Share via...</button>
+  </div>
+  <div class="copied-msg" id="copiedMsg">Copied to clipboard!</div>
+</div>
+
+<div class="footer">Tap answers to select · Auto-saves as you go</div>
 </div>
 
 <script>
-  (function() {
-    const STORAGE_KEY = 'wc_interview_draft';
-    const form = document.getElementById('interviewForm');
-    const panel = document.getElementById('resultPanel');
-    const content = document.getElementById('resultContent');
-    const copyBtn = document.getElementById('copyBtn');
-    const copiedMsg = document.getElementById('copiedMsg');
-    const progressText = document.getElementById('progressText');
-    const progressBar = document.getElementById('progressBar');
-    const draftStatus = document.getElementById('draftStatus');
-    const clearDraftBtn = document.getElementById('clearDraftBtn');
-    const questions = [
-      "1. What does a typical workday look like?",
-      "2. What part of your day takes the most time/energy?",
-      "3. What's the most frustrating thing about running your business?",
-      "4. Do you work alone or with anyone else?",
-      "5. How do most customers find you?",
-      "6. Is getting new customers or keeping regulars harder?",
-      "7. How do customers usually book you?",
-      "8. Do people cancel often? How do you manage?",
-      "9. How do customers pay you?",
-      "10. Do you chase payments? How much time does that take?",
-      "11. How do you decide what to charge?",
-      "12. Do you ever feel you undercharged?",
-      "13. Do you handle your own bookkeeping / tax?",
-      "14. How much time per week on paperwork vs cleaning?",
-      "15. Do you have a website, Google Business, or social media?",
-      "16. How do you keep track of customers?",
-      "17. Would you like to grow the business?",
-      "18. What's stopping you from raising prices?",
-      "19. If you had one extra hour a day, what would you do?",
-      "20. What does a perfect day look like?",
-      "21. If you could fix one thing with a magic wand, what?",
-      "22. Is there something you wish existed?",
-      "23. Anything else you'd like to share?"
-    ];
+(function(){
+  const SK = 'wc_interview_draft';
+  const form = document.getElementById('interviewForm');
+  const panel = document.getElementById('resultPanel');
+  const content = document.getElementById('resultContent');
+  const copyBtn = document.getElementById('copyBtn');
+  const shareBtn = document.getElementById('shareBtn');
+  const copiedMsg = document.getElementById('copiedMsg');
+  const progressText = document.getElementById('progressText');
+  const progressBar = document.getElementById('progressBar');
+  const draftStatus = document.getElementById('draftStatus');
+  const clearBtn = document.getElementById('clearDraftBtn');
+  const TOTAL = 23;
 
-    // ── Save draft ──
-    function saveDraft() {
-      const fd = new FormData(form);
-      const answers = {};
-      questions.forEach((_, i) => {
-        const key = `q${i + 1}`;
-        answers[key] = fd.get(key) || '';
-      });
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
-        draftStatus.textContent = '💾 saved';
-        draftStatus.style.color = '#8a9bb0';
-      } catch(e) {}
-      updateProgress();
+  const qLabels = [
+    "1. What does a typical workday look like?",
+    "2. What takes the most time/energy?",
+    "3. Most frustrating thing?",
+    "4. Work alone or with help?",
+    "5. How do customers find you?",
+    "6. New customers or keeping regulars?",
+    "7. How do customers book?",
+    "8. Do people cancel often?",
+    "9. How do customers pay?",
+    "10. Do you chase payments?",
+    "11. How do you set prices?",
+    "12. Ever undercharge?",
+    "13. Who handles bookkeeping/tax?",
+    "14. Time on paperwork vs cleaning?",
+    "15. Website / Google / social media?",
+    "16. How do you track customers?",
+    "17. Want to grow?",
+    "18. What stops you raising prices?",
+    "19. Extra hour a day — what would you do?",
+    "20. What's a perfect day?",
+    "21. Magic wand — fix one thing?",
+    "22. Something you wish existed?",
+    "23. Anything else to share?"
+  ];
+
+  function getAnswer(i) {
+    const radio = form.querySelector(`input[name="q${i+1}"]:checked`);
+    if (!radio) return '';
+    if (radio.value === 'other') {
+      const other = form.querySelector(`input[name="q${i+1}o"]`);
+      return (other && other.value.trim()) ? other.value.trim() : '';
     }
+    return radio.value;
+  }
 
-    // ── Restore draft ──
-    function restoreDraft() {
-      try {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (!saved) return;
-        const answers = JSON.parse(saved);
-        let filled = 0;
-        questions.forEach((_, i) => {
-          const key = `q${i + 1}`;
-          const el = form.querySelector(`[name="${key}"]`);
-          if (el && answers[key]) {
-            el.value = answers[key];
-            if (answers[key].trim()) filled++;
-          }
-        });
-        if (filled > 0) {
-          clearDraftBtn.style.display = 'inline';
-          updateProgress();
-          draftStatus.textContent = '📋 draft restored';
-          setTimeout(() => { draftStatus.textContent = '💾 saved'; }, 2000);
+  function getAllAnswers() {
+    const answers = [];
+    for (let i = 0; i < TOTAL; i++) answers.push(getAnswer(i));
+    return answers;
+  }
+
+  function countAnswered() {
+    let n = 0;
+    for (let i = 0; i < TOTAL; i++) { if (getAnswer(i)) n++; }
+    return n;
+  }
+
+  function updateProgress() {
+    const a = countAnswered();
+    progressText.textContent = `${a} / ${TOTAL} answered`;
+    progressBar.style.width = Math.round((a/TOTAL)*100) + '%';
+  }
+
+  function saveDraft() {
+    const data = {};
+    for (let i = 0; i < TOTAL; i++) {
+      const sel = form.querySelector(`input[name="q${i+1}"]:checked`);
+      data[`q${i+1}`] = sel ? sel.value : '';
+      const oth = form.querySelector(`input[name="q${i+1}o"]`);
+      data[`q${i+1}o`] = oth ? oth.value : '';
+    }
+    try { localStorage.setItem(SK, JSON.stringify(data)); } catch(e) {}
+    draftStatus.textContent = '💾 saved';
+    draftStatus.style.color = '#8a9bb0';
+    updateProgress();
+  }
+
+  function restoreDraft() {
+    try {
+      const raw = localStorage.getItem(SK);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      let filled = 0;
+      for (let i = 0; i < TOTAL; i++) {
+        const val = data[`q${i+1}`];
+        const oth = data[`q${i+1}o`] || '';
+        if (val) {
+          const radio = form.querySelector(`input[name="q${i+1}"][value="${val.replace(/"/g,'\\"')}"]`);
+          if (radio) { radio.checked = true; filled++; }
         }
-      } catch(e) {}
-    }
+        const othInput = form.querySelector(`input[name="q${i+1}o"]`);
+        if (othInput && oth) { othInput.value = oth; if (!data[`q${i+1}`] || data[`q${i+1}`] === 'other') filled++; }
+      }
+      if (filled > 0) {
+        clearBtn.style.display = 'inline';
+        updateProgress();
+        draftStatus.textContent = '📋 draft restored';
+        setTimeout(() => { draftStatus.textContent = '💾 saved'; }, 2000);
+      }
+    } catch(e) {}
+  }
 
-    // ── Update progress ──
-    function updateProgress() {
-      const fd = new FormData(form);
-      let answered = 0;
-      questions.forEach((_, i) => {
-        const val = fd.get(`q${i + 1}`) || '';
-        if (val.trim()) answered++;
-      });
-      const pct = Math.round((answered / questions.length) * 100);
-      progressText.textContent = `${answered} / ${questions.length} answered`;
-      progressBar.style.width = pct + '%';
-    }
+  function clearDraft() {
+    if (!confirm('Clear saved answers?')) return;
+    localStorage.removeItem(SK);
+    form.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+    form.querySelectorAll('.other-input').forEach(i => i.value = '');
+    updateProgress();
+    clearBtn.style.display = 'none';
+    draftStatus.textContent = '🗑 cleared';
+    setTimeout(() => { draftStatus.textContent = '💾 saved'; }, 2000);
+  }
 
-    // ── Clear draft ──
-    function clearDraft() {
-      if (!confirm('Clear all saved answers and start over?')) return;
-      localStorage.removeItem(STORAGE_KEY);
-      questions.forEach((_, i) => {
-        const el = form.querySelector(`[name="q${i + 1}"]`);
-        if (el) el.value = '';
-      });
-      updateProgress();
-      clearDraftBtn.style.display = 'none';
-      draftStatus.textContent = '🗑 draft cleared';
-      draftStatus.style.color = '#8a9bb0';
-      setTimeout(() => { draftStatus.textContent = '💾 saved'; }, 2000);
-    }
+  // Auto-save
+  let saveTimer;
+  form.addEventListener('input', function() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveDraft, 400);
+  });
+  form.addEventListener('change', function() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveDraft, 200);
+  });
 
-    // ── Auto-save on any input ──
-    let saveTimer;
-    form.addEventListener('input', function() {
-      clearTimeout(saveTimer);
-      saveTimer = setTimeout(saveDraft, 400);
+  clearBtn.addEventListener('click', clearDraft);
+
+  // Submit
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const answers = getAllAnswers();
+    let html = '', plain = '=== Window Cleaner Interview Answers ===\n\n';
+    answers.forEach((a, i) => {
+      const val = a || '(skipped)';
+      html += `<div class="qa-block"><div class="qa-q">${qLabels[i]}</div><div class="qa-a">${val}</div></div>`;
+      plain += `${qLabels[i]}\n${val}\n\n`;
     });
+    content.innerHTML = html;
+    copyBtn.dataset.text = plain;
+    localStorage.removeItem(SK);
+    form.style.display = 'none';
+    panel.classList.add('visible');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
-    clearDraftBtn.addEventListener('click', clearDraft);
-
-    // ── Submit ──
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const fd = new FormData(form);
-      let html = '';
-      let plain = '=== Window Cleaner Interview Answers ===\n\n';
-
-      questions.forEach((q, i) => {
-        const key = `q${i + 1}`;
-        const val = (fd.get(key) || '').trim();
-        html += `<div class="qa-block"><div class="qa-q">${q}</div><div class="qa-a">${val || '<em style="color:#aaa">(no answer)</em>'}</div></div>`;
-        plain += `${q}\n${val || '(no answer)'}\n\n`;
-      });
-
-      content.innerHTML = html;
-      copyBtn.dataset.text = plain;
-
-      // Clear saved draft after submit
-      localStorage.removeItem(STORAGE_KEY);
-
-      form.style.display = 'none';
-      document.querySelector('.progress-section')?.remove();
-      panel.classList.add('visible');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Copy
+  copyBtn.addEventListener('click', function() {
+    const t = this.dataset.text;
+    navigator.clipboard.writeText(t).then(() => {
+      copiedMsg.classList.add('visible');
+      setTimeout(() => copiedMsg.classList.remove('visible'), 2500);
+    }).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = t; document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta);
+      copiedMsg.classList.add('visible');
+      setTimeout(() => copiedMsg.classList.remove('visible'), 2500);
     });
+  });
 
-    // ── Copy ──
-    copyBtn.addEventListener('click', function() {
-      const text = this.dataset.text;
-      navigator.clipboard.writeText(text).then(() => {
-        copiedMsg.classList.add('visible');
-        setTimeout(() => copiedMsg.classList.remove('visible'), 2500);
-      }).catch(() => {
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        copiedMsg.classList.add('visible');
-        setTimeout(() => copiedMsg.classList.remove('visible'), 2500);
-      });
+  // Share
+  if (shareBtn) {
+    shareBtn.addEventListener('click', function() {
+      const t = copyBtn.dataset.text;
+      if (navigator.share) {
+        navigator.share({ title: 'Window Cleaner Interview Answers', text: t }).catch(() => {});
+      } else { copyBtn.click(); }
     });
+  }
 
-    // ── Init ──
-    restoreDraft();
-  })();
+  restoreDraft();
+})();
 </script>
-
 </body>
 </html>

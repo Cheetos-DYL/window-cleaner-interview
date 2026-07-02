@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Window Cleaning Business – Quick Chat</title>
+<title>Skyblue Project – Business Chat</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -88,8 +88,8 @@
 <div class="container">
 
 <div class="header">
-  <h1>🧼 Window Cleaning Business Chat</h1>
-  <p>Quick chat to understand how things are going. Just tap the closest answer.</p>
+  <h1>🧼 Skyblue Project</h1>
+  <p>Quick chat about your window cleaning business. Just tap the closest answer.</p>
   <span class="hint">⏱ ~8 minutes · 23 questions · auto-saves draft</span>
 </div>
 
@@ -517,7 +517,7 @@
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     const answers = getAllAnswers();
-    let html = '', plain = '=== Window Cleaner Interview Answers ===\n\n';
+    let html = '', plain = '=== Skyblue Project Answers ===\n\n';
     answers.forEach((a, i) => {
       const val = a || '(skipped)';
       html += `<div class="qa-block"><div class="qa-q">${qLabels[i]}</div><div class="qa-a">${val}</div></div>`;
@@ -551,7 +551,7 @@
     shareBtn.addEventListener('click', function() {
       const t = copyBtn.dataset.text;
       if (navigator.share) {
-        navigator.share({ title: 'Window Cleaner Interview Answers', text: t }).catch(() => {});
+        navigator.share({ title: 'Skyblue Project Answers', text: t }).catch(() => {});
       } else { copyBtn.click(); }
     });
   }

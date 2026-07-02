@@ -1,6 +1,6 @@
 services:
   - type: static_site
-    name: window-cleaner-interview
+    name: skyblue-project
     buildCommand: echo "Static HTML — no build needed"
     staticPublishPath: .
     routes:
